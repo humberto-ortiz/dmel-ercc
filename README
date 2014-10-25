@@ -1,0 +1,88 @@
+2014/04/02 - HOZ
+
+There are publically available datasets with dmel spike in data
+
+Jiang L, Schlesinger F, Davis CA, Zhang Y et al. Synthetic spike-in
+standards for RNA-seq experiments. Genome Res 2011
+Sep;21(9):1543-51. PMID: 21816910
+
+RNA-Seq on libraries made from External RNA Controls Consortium (ERCC)
+external RNA controls, and a mixture of mRNA from Drosophila
+melanogaster S2 cell and ERCC mRNAs.
+
+We evaluated performance of RNA-Seq on known synthetic PolyA+ mRNAs
+from the External RNA Controls Consortium (ERCC) alone and in mixtures
+with PolyA+ mRNA from Drosophila S2 cells. ERCC mRNAs were obtained
+under Phase V testing from the National Institutes of Standards and
+Technology (NIST). The ERCC pool contained 96 species of mRNA of
+various lengths and GC content covering a 2^20 concentration
+range. Libraries were constructed using 100ng S2 mRNA with 5ng, 2.5ng,
+or 1ng ERCC mRNAs, and using 50ng ERCC mRNA without S2 cell mRNA. Our
+data shows an outstanding linear fit between RNA-Seq read density and
+known input amounts.
+
+GSM516588, GSM516589, GSM517059, GSM517060, GSM517061, GSM517062, and
+GSE26284.
+
+GSE20579 is
+
+GSM517059       100ng_S2_5ng_ERCC_phaseV_pool15_mRNA-seq
+GSM517060       100ng_S2_2.5ng_ERCC_phaseV_pool15_mRNA-seq
+GSM517061       100ng_S2_1ng_ERCC_phaseV_pool15_mRNA
+GSM517062       50ng_ERCC_phaseV_pool15_mRNA-seq
+
+http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE20579&format=file
+
+GSE20555 has dilutions of different runs:
+
+GSM516588       100ng_library_methA_S2_2.5%ERCC_phaseV_pool15mRNA
+GSM516589       100ng_library_methB_S2_2.5%ERCC_phaseV_pool15_mRNA
+GSM516590       50ng_library_methB_S2_2.5%ERCC_phaseV_pool15_mRNA
+GSM516591       10ng_library_methB_S2_2.5%ERCC_phaseV_pool15_mRNA
+GSM516592       1ng_library_methB_S2_2.5%ERCC_phaseV_pool15_mRNA
+GSM516593       0.4ng_library_methB_S2_2.5%ERCC_phaseV_pool15_mRNA
+GSM516594       0.01ng_library_methB_S2_2.5%ERCC_phaseV_pool15_mRNA
+
+Supplemental table S2 shows % reads mapped to genomes and measured
+concentrations.
+
+2014/04/07 - HOZ
+
+See http://useq.sourceforge.net/cmdLnMenus.html#RNASeqSimulator and
+http://cbil.upenn.edu/BEERS/
+
+for other simulators
+
+2014/05/01 - HOZ
+
+http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE20579
+
+  612  wget -c http://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE20579&format=file
+  614  cat index.html\?acc\=GSE20579 |grep tar
+  615  wget -c "ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE20nnn/GSE20579/suppl/GSE20579_RAW.tar"
+
+SAM files? no, bowtie tab files. 
+
+apt-get install python-virtualenv
+
+  647  sudo apt-get install virtualenvwrapper
+  654  source /etc/bash_completion.d/virtualenvwrapper
+  655  mkvirtualenv dmel
+  657  pip install pysam
+
+http://pysam.readthedocs.org/en/latest/
+
+samtest.py
+
+install samtools
+
+/usr/share/samtools/bowtie2sam.pl GSM517059_run29_s_1_ERCC_dm3_map.txt > test.sam
+
+2014/10/25 - HOZ
+
+workon dmel to load virtual environment
+lsvirtualenv to list them
+
+test.sam is missing headers, can't load into pysam:
+
+https://code.google.com/p/pysam/issues/detail?id=73
