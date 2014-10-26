@@ -86,3 +86,7 @@ lsvirtualenv to list them
 test.sam is missing headers, can't load into pysam:
 
 https://code.google.com/p/pysam/issues/detail?id=73
+
+See the cogent package, it can parse bowtie files.
+
+cogent-test.py
