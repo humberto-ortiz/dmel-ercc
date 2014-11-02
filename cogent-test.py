@@ -1,12 +1,18 @@
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("mapfile", help="filename of mapfile")
+args = parser.parse_args()
+
 import cogent.parse.bowtie
 
-data = cogent.parse.bowtie.BowtieOutputParser( "GSM517059_run29_s_1_ERCC_dm3_map.txt" )
+data = cogent.parse.bowtie.BowtieOutputParser( args.mapfile )
 
 count = 0
 for row in data:
      print row
      count += 1
-     if count > 10:
+     if count > 20:
           break
 
 

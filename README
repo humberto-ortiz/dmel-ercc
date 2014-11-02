@@ -90,3 +90,12 @@ https://code.google.com/p/pysam/issues/detail?id=73
 See the cogent package, it can parse bowtie files.
 
 cogent-test.py
+
+2014/11/01 - HOZ
+
+cogent is part of QIIME. MacQiime is installed on the Mac, and hulk
+has /usr/local/qiime/activate.sh
+
+2014/11/02 - HOZ
+
+Pass mapfile as a positional argument, using argparse module.
